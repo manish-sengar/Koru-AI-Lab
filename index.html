@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Koru AI Lab | Experiments in designing with AI</title>
+<meta name="description" content="Koru's AI Lab: the tools we've built, the things we've measured and the lessons we've learned designing with AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" id="progress" hidden></div>
+
+<svg class="defs" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="g-tool-0"><stop offset="0" stop-color="#6D5BFF" stop-opacity=".85"/><stop offset="1" stop-color="#6D5BFF" stop-opacity="0"/></radialGradient>
+    <radialGradient id="g-tool-1"><stop offset="0" stop-color="#B06BFF" stop-opacity=".8"/><stop offset="1" stop-color="#B06BFF" stop-opacity="0"/></radialGradient>
+    <radialGradient id="g-tool-2"><stop offset="0" stop-color="#37C2FF" stop-opacity=".7"/><stop offset="1" stop-color="#37C2FF" stop-opacity="0"/></radialGradient>
+    <radialGradient id="g-insight-0"><stop offset="0" stop-color="#12C2A6" stop-opacity=".8"/><stop offset="1" stop-color="#12C2A6" stop-opacity="0"/></radialGradient>
+    <radialGradient id="g-insight-1"><stop offset="0" stop-color="#3E9BFF" stop-opacity=".75"/><stop offset="1" stop-color="#3E9BFF" stop-opacity="0"/></radialGradient>
+    <radialGradient id="g-insight-2"><stop offset="0" stop-color="#9BE15D" stop-opacity=".6"/><stop offset="1" stop-color="#9BE15D" stop-opacity="0"/></radialGradient>
+    <radialGradient id="g-evaluation-0"><stop offset="0" stop-color="#FFB938" stop-opacity=".85"/><stop offset="1" stop-color="#FFB938" stop-opacity="0"/></radialGradient>
+    <radialGradient id="g-evaluation-1"><stop offset="0" stop-color="#FF6FA0" stop-opacity=".75"/><stop offset="1" stop-color="#FF6FA0" stop-opacity="0"/></radialGradient>
+    <radialGradient id="g-evaluation-2"><stop offset="0" stop-color="#FF8F4A" stop-opacity=".7"/><stop offset="1" stop-color="#FF8F4A" stop-opacity="0"/></radialGradient>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#141432" flood-opacity=".16"/></filter>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#/" aria-label="Koru AI Lab home">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6D5BFF"/><stop offset="1" stop-color="#37C2FF"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#bm)"/><path d="M11 25V13a6 6 0 1 1 6 6h-2a2.5 2.5 0 1 1 2.5-2.5" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>
+      koru <small>AI Lab</small>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#/" aria-current="page">AI Lab</a>
+      <a href="https://www.koruux.com/case-studies/" target="_blank" rel="noopener">Work</a>
+      <a href="https://www.koruux.com/about/" target="_blank" rel="noopener">About</a>
+      <a href="https://www.koruux.com/contact/" target="_blank" rel="noopener">Contact</a>
+    </nav>
+    <div class="nav-tools">
+      <button class="btn btn-sm" type="button" data-surprise aria-label="Open a random experiment">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></svg>
+        <span class="surprise-txt">Surprise me</span>
+      </button>
+      <button class="btn btn-sm icon-btn" id="themeBtn" type="button" aria-label="Switch between light and dark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/></svg>
+      </button>
+      <button class="btn btn-sm icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sheet">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="sheet" id="sheet" aria-hidden="true">
+  <div class="sheet-top"><span class="brand">koru <small>AI Lab</small></span><button class="btn btn-sm icon-btn" id="closeSheet" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <nav aria-label="Mobile">
+    <a href="#/" data-close>AI Lab</a>
+    <a href="https://www.koruux.com/case-studies/" target="_blank" rel="noopener">Work</a>
+    <a href="https://www.koruux.com/about/" target="_blank" rel="noopener">About</a>
+    <a href="https://www.koruux.com/contact/" target="_blank" rel="noopener">Contact</a>
+  </nav>
+</div>
+
+<main id="main">
+  <div id="home"></div>
+  <div id="detail" hidden></div>
+</main>
+
+<section class="band">
+  <div class="wrap band-in">
+    <h2>Building AI into a healthcare product?</h2>
+    <div>
+      <p>We bring what we learn in the lab to client work: where AI helps, where it needs a human in the loop, and how to design for trust from day one.</p>
+      <a class="btn btn-primary" href="https://www.koruux.com/contact/" target="_blank" rel="noopener">Talk to Koru</a>
+    </div>
+  </div>
+</section>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <span>© 2026 Koru UX Design LLP</span>
+    <nav aria-label="Footer">
+      <a href="https://www.koruux.com/" target="_blank" rel="noopener">koruux.com</a>
+      <a href="https://www.koruux.com/services/ux-for-ai/" target="_blank" rel="noopener">UX for AI</a>
+      <a href="https://www.koruux.com/case-studies/" target="_blank" rel="noopener">Case studies</a>
+      <a href="https://www.koruux.com/careers/" target="_blank" rel="noopener">Careers</a>
+    </nav>
+  </div>
+</footer>
+<div class="scrim" id="scrim"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="js/data.js"></script>
+<script src="js/illustrations.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
